@@ -4,6 +4,9 @@ import React from 'react';
 // react-native libraries
 import { StyleSheet, View, Text } from 'react-native';
 
+// third-party libraries
+// import firebase from 'firebase';
+
 export default class Header extends React.Component {
   constructor(props) {
     super(props);
