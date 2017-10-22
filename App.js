@@ -2,12 +2,26 @@
 import React from 'react';
 
 // react-native libraries
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
+
+// third-party librariesß
+import firebase from 'firebase';
 
 // component
 import { Header } from './src/common';
 
 export default class App extends React.Component {
+  componentWillMount() {
+    firebase.initializeApp({
+      apiKey: 'AIzaSyBf6OSIXDwm0SZLByhrn3oPqQAmIwwWGWY',
+      authDomain: 'auth-dc86f.firebaseapp.com',
+      databaseURL: 'https://auth-dc86f.firebaseio.com',
+      projectId: 'auth-dc86f',
+      storageBucket: 'auth-dc86f.appspot.com',
+      messagingSenderId: '386415628919'
+    });
+  }
+
   render() {
     return (
       <View>
