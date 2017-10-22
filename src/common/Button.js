@@ -13,7 +13,7 @@ const Button = ({ onPress, text }) => {
       </Text>
     </TouchableOpacity>
   );
-}
+};
 
 const styles = StyleSheet.create({
   buttonStyle: {
@@ -35,6 +35,6 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
 
   }
-})
+});
 
 export { Button };

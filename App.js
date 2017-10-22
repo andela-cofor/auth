@@ -2,13 +2,14 @@
 import React from 'react';
 
 // react-native libraries
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 
 // third-party librariesß
 import firebase from 'firebase';
 
 // component
 import { Header } from './src/common';
+import LoginForm from './src/component/signup/LoginForm';
 
 export default class App extends React.Component {
   componentWillMount() {
@@ -26,7 +27,7 @@ export default class App extends React.Component {
     return (
       <View>
         <Header headerText="Authentication" />
-        <Text>An App!</Text>
+        <LoginForm />
       </View>
     );
   }
