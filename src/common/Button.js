@@ -7,7 +7,9 @@ import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 const Button = ({ onPress, text }) => {
   const { buttonStyle, buttonTextStyle } = styles;
   return (
-    <TouchableOpacity onPress={onPress} style={buttonStyle} >
+    <TouchableOpacity
+      onPress={onPress}
+      style={buttonStyle} >
       <Text style={buttonTextStyle} >
         {text}
       </Text>
@@ -24,7 +26,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#007aff',
     marginLeft: 5,
-    marginRight: 5
+    marginRight: 5,
 
   },
   buttonTextStyle: {

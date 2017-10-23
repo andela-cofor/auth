@@ -8,10 +8,13 @@ import { View } from 'react-native';
 import firebase from 'firebase';
 
 // component
-import { Header } from './src/common';
+import { Header, Button } from './src/common';
 import LoginForm from './src/component/signup/LoginForm';
+import {Spinner} from "./src/common/Spinner";
 
 export default class App extends React.Component {
+  state = { loggedIn: false };
+
   componentWillMount() {
     firebase.initializeApp({
       apiKey: 'AIzaSyBf6OSIXDwm0SZLByhrn3oPqQAmIwwWGWY',
@@ -21,23 +24,42 @@ export default class App extends React.Component {
       storageBucket: 'auth-dc86f.appspot.com',
       messagingSenderId: '386415628919'
     });
+
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({ loggedIn: true });
+      } else {
+        this.setState({ loggedIn: false });
+      }
+    });
+  }
+
+
+  renderContent() {
+    switch (this.state.loggedIn) {
+      case true:
+        return (
+          <View style={{ height: 50 }}>
+            <Button
+
+              onPress={() => firebase.auth().signOut()}
+              text='Log Out'
+            />
+          </View>
+        );
+      case false:
+        return <LoginForm />;
+      default:
+         return <Spinner size='large' />;
+    }
   }
 
   render() {
     return (
-      <View>
+      <View style={{ flex: 1 }}>
         <Header headerText="Authentication" />
-        <LoginForm />
+        { this.renderContent()}
       </View>
     );
   }
 }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-// });
